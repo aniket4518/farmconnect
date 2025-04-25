@@ -1,0 +1,73 @@
+@import url( "./ProductList.module.css");
+header{
+    height:70px;
+    width:100%;
+    overflow: hidden;
+    display: inline-block;
+    
+    display: flex;
+    margin-top: 0px;
+    padding-top: 0px;
+    background: linear-gradient(120deg, #232526 40%, #3a3a3a 60%, #6e6e6e 100%);
+    
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0; 
+    display: flex;
+    
+  }
+  ul li{
+    margin: 15px;
+    list-style: none;
+    display: inline-block;
+     font-weight: 500;
+     font-size:18px;
+  }
+  a{
+    text-decoration: none;
+    color: #cecfdd;
+  }
+   
+  h1{
+    font-size: 1.5em;
+    color: #d0d0d0;
+    margin: 0;
+    padding: 0;
+    width:  70px;
+     
+  }
+  .li1{
+    margin-left: 50px;
+  }
+   .search{
+    background-color:  #cecfdd;
+    width:570px;
+    height: 35px;
+    margin-top: 15px;
+    border-radius: 15px;
+    color: black;
+   }
+   li.cart a svg{
+    height:1.8em;
+    width: 1.8em;
+   }
+   .bt2{
+    height: 45px;
+    width: 90px;
+    font-size: 12.5px;
+   }
+   .bt1{
+    margin-left: 20px;
+   }
+   span{
+    font-size: 1.5em;
+    color: #cecfdd;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -65px;
+    /* width:  70px; */
+   }
+ 

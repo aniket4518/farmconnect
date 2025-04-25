@@ -1,0 +1,102 @@
+@import url(./Header.module.css);
+ 
+*{
+  padding :0;
+  box-sizing: border-box;
+}
+/* .App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+} */
+ 
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;  
+  line-height: 1.5;
+  font-weight: 400; 
+  color-scheme: light dark;
+  color: rgb(255, 255, 255);
+  /* background: linear-gradient(135deg, #232526 0%, #FFD700 80%, #FFF8DC 100%); */
+  /* Option 2 good */
+  background: linear-gradient(120deg, #b0b0b0 70%, #232526 100%);  
+  /* Option 3 */
+  /* background: linear-gradient(135deg, #181818 0%, #e6b800 70%, #fffbe6 100%); */
+  /* Option 4 look better */
+  /* background: linear-gradient(120deg, #232526 0%, #ffef8b 60%, #fff8e1 100%); */
+  /* Option 5 */
+  /* background: linear-gradient(135deg, #232526 0%, #ffe259 60%, #ffa751 100%); */
+  /* Option 6 */
+  /* background: linear-gradient(135deg, #232526 0%, #f9d423 60%, #fffcf2 100%); */
+  /* Option 7 */
+  /* background: linear-gradient(120deg, #232526 0%, #f7b42c 70%, #fcf6ba 100%); */
+  /* Option 8 */
+  /* background: linear-gradient(135deg, #232526 0%, #f7971e 60%, #ffd200 100%); */
+  /* Option 9 */
+  /* background: linear-gradient(135deg, #232526 0%, #ffe259 60%, #ffa751 100%); */
+  /* Option 10 */
+  /* background: linear-gradient(135deg, #232526 0%, #fceabb 60%, #f8b500 100%); */
+  /* background: linear-gradient(135deg, #232526 0%, #43e97b 60%, #38f9d7 100%); */
+ 
+    /* ...existing code... */
+    /* background: linear-gradient(135deg, #e0ffe8 0%, #7fffd4 60%, #43e97b 100%); */
+    
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+} */
+ .logo{
+  width: 270px;
+  height: 70px;
+  /* margin-right: 250px; */
+  margin: 10px;
+    
+ }
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+   
+   
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+ 
+
+button {
+  border-radius: 9px;
+  border: 1px solid transparent;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin:0.7em;
+  height:40px;
+  width: 90px
+}
+ 
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline:10px auto -webkit-focus-ring-color;
+}
+ 
+ 

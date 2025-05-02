@@ -5,11 +5,16 @@ import { GlobalState } from "../../GlobalState";
 import '../../styles/header.module.css';
 
 const Header = () => {
-    const { updatedCart = [], logoutUser } = useContext(GlobalState); // Ensure updatedCart is always an array
+    const { cart = [], logoutUser } = useContext(GlobalState); // Changed from updatedCart to cart
 
     const handleLogout = () => {
         logoutUser(); // Call the logoutUser function
     };
+
+    // Calculate total items in cart including quantities
+    const cartItemCount = Array.isArray(cart) 
+        ? cart.reduce((total, item) => total + (item.quantity || 1), 0)
+        : 0;
 
     return (
         <header>
@@ -26,7 +31,7 @@ const Header = () => {
                 <li className="cart">
                     <Link to="/cart">
                         <FaCartShopping />
-                        <span>{Array.isArray(updatedCart) ? updatedCart.length : 0}</span> {/* Safely access length */}
+                        <span>{cartItemCount}</span>
                     </Link>
                 </li>
                 <button className="bt1"><Link to="/login">Sign In</Link></button>

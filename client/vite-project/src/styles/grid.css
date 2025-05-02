@@ -1,0 +1,36 @@
+:root {
+  --container-max-width: 1200px;
+  --container-padding: 1rem;
+}
+
+.container {
+  width: 100%;
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
+}
+
+.col {
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+/* Responsive columns */
+@media (min-width: 768px) {
+  .col-md-6 { width: 50%; }
+  .col-md-4 { width: 33.333%; }
+  .col-md-3 { width: 25%; }
+  /* Add more as needed */
+}
+
+@media (min-width: 1024px) {
+  .col-lg-4 { width: 33.333%; }
+  .col-lg-3 { width: 25%; }
+  /* Add more as needed */
+}

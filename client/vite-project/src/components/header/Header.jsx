@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { GlobalState } from "../../GlobalState";
-import '../../styles/header.module.css';
+import '../../styles/Header.module.css';
 
 const Header = () => {
     const { cart = [], logoutUser } = useContext(GlobalState); // Changed from updatedCart to cart

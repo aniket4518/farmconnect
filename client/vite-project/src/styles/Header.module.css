@@ -1,72 +1,139 @@
 @import url( "./ProductList.module.css");
 header{
-    height:70px;
-    width:100%;
+    height: 80px;
+    width: 100%;
     overflow: hidden;
-    display: inline-block;
-    
     display: flex;
+    align-items: center;
     margin-top: 0px;
-    padding-top: 0px;
-    background: linear-gradient(120deg, #232526 40%, #3a3a3a 60%, #6e6e6e 100%);
-    
+    padding: 0 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    /* position:fixed */
 }
+
 ul{
     list-style-type: none;
     padding: 0;
     margin: 0; 
     display: flex;
-    
-  }
-  ul li{
-    margin: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+ul li{
+    margin: 0 15px;
     list-style: none;
     display: inline-block;
-     font-weight: 500;
-     font-size:18px;
-  }
-  a{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+a{
     text-decoration: none;
-    color: #cecfdd;
-  }
+    color: inherit;
+}
+  
+/* Set navigation item colors to black */
+ul li a {
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+  
+/* Add hover effect for navigation links */
+ul li a:hover {
+    color: #40b959;
+    text-decoration: none;
    
-  h1{
-    font-size: 1.5em;
-    color: #d0d0d0;
+}
+  
+.logo a{
+    font-size: 1.7em;
+    color: #40b959;
+    font-weight: 800;
+    padding-left: 80px;
+    width: auto;
+    letter-spacing: -0.5px;
+}
+
+/* Navigation spacing */
+.li1{
+    margin-left: 100px;
+}
+
+.search{
+    background-color: #f5f5f5;
+    width: 250px;
+    height: 40px;
     margin: 0;
-    padding: 0;
-    width:  70px;
-     
-  }
-  .li1{
-    margin-left: 50px;
-  }
-   .search{
-    background-color:  #cecfdd;
-    width:570px;
-    height: 35px;
-    margin-top: 15px;
-    border-radius: 15px;
+    border-radius: 20px;
+    border: 1px solid #eaeaea;
     color: black;
-   }
-   li.cart a svg{
-    height:1.8em;
-    width: 1.8em;
-   }
-   .bt2{
-    height: 45px;
-    width: 90px;
-    font-size: 12.5px;
-   }
-   .bt1{
-    margin-left: 20px;
-   }
-   span{
-    font-size: 1.5em;
-    color: #cecfdd;
-    margin: 0;
-    padding: 0;
+    padding: 0 15px;
+    outline: none;
+}
+
+li.cart a svg{
+    height: 1.5em;
+    width: 1.5em;
+    color: #40b959;
+
     position: relative;
-    top: -65px;
-    /* width:  70px; */
-   }
+}
+
+/* Fix for cart counter not showing */
+li.cart {
+    position: relative;
+}
+
+li.cart span {
+    font-size: 0.8em;
+    background-color: #40b959;
+    color: white;
+    margin: 0;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    display: inline-block;
+}
+
+.bt2 {
+    background-color: #40b959;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    padding: 0 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* .bt1 a, .bt2 a, button a {
+    color: white !important;
+} */
+
+.bt1:hover, .bt2:hover, button:hover {
+    background-color: #2d8a41;
+}
+
+ 
+
+.bt1:hover, .bt2:hover {
+    opacity: 0.9;
+}
+
+span{
+    font-size: 0.8em;
+    background-color: #40b959;
+    color: white;
+    margin: 0;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}

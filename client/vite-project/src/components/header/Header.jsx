@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { GlobalState } from "../../GlobalState";
-import '../../styles/Header.module.css';
+import styles from '../../styles/Header.module.css';
 
 const Header = () => {
     const { cart = [], logoutUser } = useContext(GlobalState); // Changed from updatedCart to cart
@@ -19,24 +19,31 @@ const Header = () => {
     return (
         <header>
             <ul> 
-                <div className="logo">
-                    <h1>
-                        <Link to="/">farmerConnect</Link>
-                    </h1>    
-                </div> 
-                <input className="search" type="text" placeholder="  Search for products, brands and more" />
-                <li className="li1"><Link to="/products">Products</Link></li>
+                <li className={styles.li1}><Link to="/">Home</Link></li>
+                <li><Link to="/products">Products</Link></li>
                 <li><Link to="/pricing">Pricing</Link></li>
                 <li><Link to="/about">About</Link></li>
+                <li className={styles.logo}> 
+                    <Link to="/">farmerConnect</Link>       
+                </li> 
+                <li>
+                    <input className={styles.search} type="text" placeholder="  Search for products, brands and more" />
+                </li>
                 <li className="cart">
                     <Link to="/cart">
                         <FaCartShopping />
                         <span>{cartItemCount}</span>
                     </Link>
                 </li>
-                <button className="bt1"><Link to="/login">Sign In</Link></button>
-                <button className="bt2"><Link to="/register">BECAME A SELLER</Link></button>
-                <button onClick={handleLogout}>Logout</button>
+                <li>
+                  <Link to="/login">  <button className={styles.bt2}> Sign In</button></Link>
+                </li>
+                <li>
+                 <Link to="/register"> <button className={styles.bt2}> BECAME A SELLER </button></Link>
+                </li>
+                <li>
+                    <button onClick={handleLogout}>Logout</button>
+                </li>
             </ul>
         </header>
     );

@@ -6,8 +6,8 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:5173", // Replace with your client URL
-    credentials: true, // Allow cookies and other credentials
+    origin: "http://localhost:5173",  
+    credentials: true,  
     allowedHeaders:"Content-Type, Authorization",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     }));
@@ -21,6 +21,7 @@ app.use('/category',require('./routes/categoryRouter'));
 // Define a route
 app.get("/", (req, res) => {
     res.json({msg:"this is an example"});
+    console.log("this is an example")
 });
 
 // Connect to MongoDB

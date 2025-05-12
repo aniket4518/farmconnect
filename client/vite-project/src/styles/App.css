@@ -21,7 +21,7 @@
   color: rgb(255, 255, 255);
   /* background: linear-gradient(135deg, #232526 0%, #FFD700 80%, #FFF8DC 100%); */
   /* Option 2 good */
-  background: linear-gradient(120deg, #b0b0b0 70%, #232526 100%);  
+  background: white;
   /* Option 3 */
   /* background: linear-gradient(135deg, #181818 0%, #e6b800 70%, #fffbe6 100%); */
   /* Option 4 look better */
@@ -57,14 +57,13 @@
 } */
  .logo{
   width: 270px;
-  height: 70px;
-  /* margin-right: 250px; */
-  margin: 10px;
+  height: 70px;  
+  margin: 100px;
     
  }
-a:hover {
-  color: #535bf2;
-}
+ 
+ 
+ 
 
 body {
   margin: 0;

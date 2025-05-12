@@ -11,7 +11,7 @@ export const DataProvider = ({ children }) => {
         return localStorage.getItem("isLoggedIn") === "true";
     });
     const [accessToken, setAccessToken] = useState(null);
-
+  
     // Fetch cart from server on login
 
     // Add item to cart and sync to server
@@ -70,7 +70,9 @@ export const DataProvider = ({ children }) => {
             return updatedCart;
         });
     };
+   
 
+    //login
     const loginUser = async (credentials) => {
         try {
             const { data } = await axios.post("http://localhost:3000/user/login", credentials);
@@ -110,7 +112,8 @@ export const DataProvider = ({ children }) => {
             localStorage.setItem("isLoggedIn", isLoggedIn);
         }
     }, [isLoggedIn]);
-
+  
+    //product
     useEffect(() => {
         const getProducts = async () => {
             try {
@@ -138,6 +141,7 @@ export const DataProvider = ({ children }) => {
                 loginUser,
                 logoutUser,
                 accessToken,
+    
             }}
         >
             {children}

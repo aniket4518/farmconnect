@@ -4,8 +4,8 @@
         category: String,  
         description: String,
         pricePerUnit: Number,
-        quantity: Number,  
-        images: [String], 
+        Stock: Number,
+        images: [String],
         farmerId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
         createdAt: { type: Date, default: Date.now },
       });

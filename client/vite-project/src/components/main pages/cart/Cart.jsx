@@ -42,7 +42,8 @@ function Cart() {
             )}
             {Array.isArray(cart) && cart.length > 0 && (
                 <div className="cart_total">
-                    <h2>Total: {/* Add logic to calculate total price */}</h2>
+                    <h2 style={{ color: "black" }}>Total: {cart.reduce((acc, item) => acc + item.pricePerUnit * item.quantity, 0)}</h2>
+
                 </div>
             )}
         </div>

@@ -1,5 +1,7 @@
 import fruitImage from '../../../assets/images/fruit.jpg';
 import vegitablesImage from '../../../assets/images/vegitable.jpg';
+import farmersImage from '../../../assets/images/farmers.jpg';
+import Agriculture from '../../../assets/images/agriculture.jpg';
 import React, { useState, useEffect } from 'react';
 import CategoriesSection from '../category/Categories';
 import './homepage.css'
@@ -12,7 +14,7 @@ const Homepage = () => {
   const slides = [
     { 
       id: 1,
-      image:  "sa",
+      image: Agriculture,
       title: "Fresh Farm Produce",
       description: "Directly from farmers to your doorstep"
     },
@@ -30,7 +32,7 @@ const Homepage = () => {
     },
     {
       id: 4,
-      image: "LocalFarmers",
+      image: farmersImage,
       title: "Support Local Farmers",
       description: "Communities thrive when you buy local"
     }
@@ -74,7 +76,7 @@ const Homepage = () => {
             className={`slide ${index === currentSlide ? 'active' : ''}`}
             style={{ height: '100%' }}
           >
-            <div className="slide-image" style={{ backgroundImage: `url(${slide.image})`, height: '100%' }}></div>
+            <div className="slide-image" style={{ backgroundImage: `url(${slide.image})`, height: '100%'  }}></div>
             <div className="slide-content">
               <h2>{slide.title}</h2>
               <p>{slide.description}</p>

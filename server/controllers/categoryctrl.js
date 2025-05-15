@@ -11,7 +11,10 @@ const categoryctrl ={
  createCategory: async(req,res)=>{
      try{
          const {name} = req.body;
-         const newCategory = new category({name});
+         let image = "";
+         const result = await uploadImageFromImagesFolder(req.file.filename);
+         image = result.imageUrl;
+         const newCategory = new category({name, img: image});
          await newCategory.save();
          res.json({msg:"Category created"});
      }catch(err){

@@ -21,7 +21,7 @@
  }
  p{
     font-size: 0.8em;
-    color: #646cff;
+    color: #000000;
     margin: 0;
     padding: 0;
     /* width:  70px; */
@@ -39,8 +39,8 @@
     /* margin: 10px; */
  }
    .product_box button{
-      background-color: #000000;
-      color: white;
+      background-color: #40b959;
+      color: #ffffff;
       border: none;
       border-radius: 5px;
       margin-right: 60px;

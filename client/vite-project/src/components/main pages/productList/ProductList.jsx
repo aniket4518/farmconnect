@@ -16,19 +16,19 @@ const ProductList = ({ product }) => {
         <> 
         <div className="product_box">
           <div className="product_img"> 
-           <img src={product.images.url} alt={product.title} />
+           <img src={product.images && product.images[0]} alt={product.title} />
         </div>
                 <h2>
-                    <span>{product.name}</span>
-                    <p>{product.description}</p>
+                    <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: "black"}}>{product.name}</h1>
+                    {/* <p>{product.description}</p> */}
                     <p>price per unit -{product.pricePerUnit}</p>
                     <p>{product.category}</p>
                 </h2>
                 <div className="row">
                     
-                    <button onClick={() => handleAddToCart(product)}>add to cart</button>
+                    <button onClick={() => handleAddToCart(product)}>Add to cart</button>
                     <Link to={`/products/${product._id}`}>
-                        <button>View More</button>
+                        <button style={{ backgroundColor: 'transparent', color: '#40b959' }}> View More</button>
                     </Link>
                    
                 </div>

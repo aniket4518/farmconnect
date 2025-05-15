@@ -5,25 +5,24 @@ require('dotenv').config();
 
 // Configure Cloudinary with your credentials
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
+  cloud_name: process.env.Cloudname,
   api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET
+  api_secret: process.env.API_SECREAT
 });
 
 /**
- * Uploads an image to Cloudinary and deletes the local file after successful upload
- * @param {string} imagePath - Path to the image file
- * @param {Object} options - Additional Cloudinary upload options
- * @returns {Promise<Object>} - Cloudinary upload result with image URLs and details
+ * Uploads an image from ../images to Cloudinary, deletes it from disk, and returns the Cloudinary URL.
+ * @param {string} filename - The filename in the ../images folder
+ * @param {Object} options - Additional Cloudinary upload options (optional)
+ * @returns {Promise<string>} - The Cloudinary image URL
  */
-const uploadToCloudinaryAndDelete = async (imagePath, options = {}) => {
+const uploadImageFromImagesFolder = async (filename, options = {}) => {
+  const imagePath = path.join(__dirname, '..', 'images', filename);
   try {
-    // Check if file exists
     if (!fs.existsSync(imagePath)) {
-      throw new Error(`File not found at path: ${imagePath}`);
+      throw new Error(`File not found: ${imagePath}`);
     }
 
-    // Default options merged with provided options
     const uploadOptions = {
       use_filename: true,
       unique_filename: true,
@@ -32,37 +31,24 @@ const uploadToCloudinaryAndDelete = async (imagePath, options = {}) => {
       ...options
     };
 
-    // Upload the image to Cloudinary
     const result = await cloudinary.uploader.upload(imagePath, uploadOptions);
-    console.log('Image uploaded to Cloudinary:', result.public_id);
 
     // Delete the local file after successful upload
     fs.unlink(imagePath, (err) => {
       if (err) {
         console.error(`Error deleting local file ${imagePath}:`, err);
       } else {
-        console.log(`Successfully deleted local file: ${imagePath}`);
+        console.log(`Deleted local file: ${imagePath}`);
       }
     });
 
-    // Return the complete result (contains URLs, public_id, etc.)
-    return result;
+    // Return the Cloudinary URL
+    return result.secure_url;
   } catch (error) {
-    console.error('Error in Cloudinary upload:', error);
+    console.error('Cloudinary upload error:', error);
     throw error;
   }
 };
-
-/**
- * USAGE EXAMPLE:
- * 
- * 1. For a single file upload with multer:
- *    const result = await uploadToCloudinaryAndDelete(req.file.path);
- * 
- * 2. For multiple files:
- *    const uploadPromises = req.files.map(file => uploadToCloudinaryAndDelete(file.path));
- *    const results = await Promise.all(uploadPromises);
- */
 
 /**
  * Get a Cloudinary URL for the image with optional transformations
@@ -81,7 +67,7 @@ const getCloudinaryUrl = (publicId, options = {}) => {
 };
 
 module.exports = {
-  uploadToCloudinaryAndDelete,
+  uploadImageFromImagesFolder,
   getCloudinaryUrl,
   cloudinary
 };

@@ -29,7 +29,7 @@ const CategoriesSection = () => {
     
     return (
         <div style={{ padding: '0px' , textAlign:"center"}} >
-            <h2 style={{ color: 'black', marginBottom: '70px' ,fontSize:"50px"}}>Our Products!</h2>
+            <h2 style={{ color: 'black', marginBottom: '70px' ,fontSize:"50px"}}>Our Categories!</h2>
             
             <div style={{ 
                 display: 'grid', 

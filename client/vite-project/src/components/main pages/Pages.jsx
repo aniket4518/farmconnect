@@ -5,7 +5,7 @@ import Product from "./product/product";
 import Register from "./login/Register";
  
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Homepage from "./Homepage/homepage";
+import Homepage from "./Homepage/Homepage";
 import ProductDetail from "./productDetail/ProductDetail";
 import ProductForm from "../Check/ProductForm";
 
@@ -17,7 +17,7 @@ const Pages = () => {
             <Route path="/products" element={<Product />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Homepage></Homepage>} />
+            <Route path="/" element={<Homepage />} />
             <Route path="/check" element={<ProductForm/>} />
         </Routes>
     );

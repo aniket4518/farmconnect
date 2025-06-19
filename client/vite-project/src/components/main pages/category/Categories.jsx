@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Add this import
 
 const CategoriesSection = () => {
     const [category, setcategory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate(); // Add this line
    
     useEffect(() => {
         const getcategories = async () => {
@@ -57,6 +59,7 @@ const CategoriesSection = () => {
                         }}
                         onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
                         onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                        onClick={() => navigate(`/products/category/${categoryItem.name}`)}
                     >
                         <span style={{ 
                             color: 'black', 

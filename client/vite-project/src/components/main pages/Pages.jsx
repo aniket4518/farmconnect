@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./Homepage/Homepage";
 import ProductDetail from "./productDetail/ProductDetail";
 import ProductForm from "../Check/ProductForm";
+ 
 
 const Pages = () => {
     return (
@@ -19,6 +20,7 @@ const Pages = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Homepage />} />
             <Route path="/check" element={<ProductForm/>} />
+            <Route path="/products/category/:categoryId" element={<Product />} />
         </Routes>
     );
 };

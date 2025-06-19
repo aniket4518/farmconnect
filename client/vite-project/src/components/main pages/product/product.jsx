@@ -1,21 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../../GlobalState";
 import ProductList from "../productList/ProductList";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import "../../../styles/ProductList.module.css";
 
 const Product = () => {
-    const {products} = useContext(GlobalState);
-    
+    const { products: allProducts } = useContext(GlobalState);
+    const { categoryId } = useParams();
+    const [products, setProducts] = useState(allProducts);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (categoryId) {
+            setLoading(true);
+            axios
+                .get(`http://localhost:3000/product/bycategory?category=${categoryId}`)
+                .then(res => {
+                    setProducts(res.data);
+                    setLoading(false);
+                })
+                .catch(() => {
+                    setProducts([]);
+                    setLoading(false);
+                });
+        } else {
+            setProducts(allProducts);
+        }
+    }, [categoryId, allProducts]);
+
+    if (loading) return <h1>Loading...</h1>;
+
     return (
         <>
             {
-                
                 !Array.isArray(products) || products.length === 0 ? (
                     <h1>No Products Available</h1>
                 ) : (
-                    products.map((product,index) => {
-                        return <ProductList key={product._id} product={product} />;
-                    })
+                    products.map((product) => (
+                        <ProductList key={product._id} product={product} />
+                    ))
                 )
             }
         </>

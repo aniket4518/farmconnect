@@ -87,7 +87,7 @@ button {
   transition: border-color 0.25s;
   margin:0.7em;
   height:40px;
-  width: 90px
+  width: 100px
 }
  
 button:hover {

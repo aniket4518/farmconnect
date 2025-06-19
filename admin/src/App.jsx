@@ -1,11 +1,12 @@
- 
- 
+import Sidenav from "./components/Sideheader"
 
 function App() {
   
   return (
     <>
-     <h1> this is the admin page</h1>
+     <Sidenav></Sidenav>
+   
+      
     </>
   )
 }

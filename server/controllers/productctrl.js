@@ -1,11 +1,28 @@
 const product = require('../models/productmodel');
 const { uploadImageFromImagesFolder } = require('../middleware/Cloudinary');
+const mongoose = require('mongoose');
 // filter , sorting , pagenation in product list
-class name {
-    constructor(parameters) {
-        
+ 
+
+ const getproductBycategory = async (req, res) => {
+    try {
+        const { category } = req.query;
+
+        if (!category) {
+            return res.status(400).json({ msg: "Category is required" });
+        }
+
+        // Fetch products with matching category ID or name
+        const products = await product.find({ category });
+
+        res.json(products);
+    } catch (error) {
+        console.error("error in filter by category", error);
+        res.status(500).json({ msg: "error in filter by category", error: error.message });
     }
-}
+};
+
+
 const productctrl = {
     createProduct: async (req, res) => {
         try {
@@ -32,6 +49,10 @@ const productctrl = {
             return res.status(500).json({ msg: err.message });
         }
     },
+ 
+
+
+
     getProducts: async (req, res) => {
         try {
             const products = await product.find();
@@ -64,6 +85,7 @@ const productctrl = {
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
-    }
+    },
+    getproductBycategory
 }
 module.exports = productctrl;

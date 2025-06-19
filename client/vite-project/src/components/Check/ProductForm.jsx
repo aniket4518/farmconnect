@@ -88,9 +88,9 @@ const ProductForm = () => {
       console.log('Server response:', response.data);
       
       // Navigate to products page after successful creation
-      setTimeout(() => {
-        navigate('/products');
-      }, 2000);
+      // setTimeout(() => {
+      //   navigate('/products');
+      // }, 2000);
       
       // Reset form
       setProduct({
@@ -127,7 +127,7 @@ const ProductForm = () => {
         />
       </div>
       <h2>
-        <span>{product.name || 'Product Name'}</span>
+        <span  >{product.name || 'Product Name'}</span>
         <p>{product.description || 'Product Description'}</p>
         <p>price per unit - {product.pricePerUnit || '0'}</p>
         <p>{product.category ? 
@@ -169,7 +169,7 @@ const ProductForm = () => {
         <div style={{ flex: '1', minWidth: '300px' }}>
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' , color: "black" }}>
                 Product Name:
               </label>
               <input 
@@ -188,7 +188,7 @@ const ProductForm = () => {
             </div>
             
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold',color:"black" }}>
                 Price Per Unit (₹):
               </label>
               <input 
@@ -207,7 +207,7 @@ const ProductForm = () => {
             </div>
             
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold',color:"black" }}>
                 Description:
               </label>
               <textarea 
@@ -226,7 +226,7 @@ const ProductForm = () => {
             </div>
             
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color:"black" }}>
                 Category:
               </label>
               <select 
@@ -251,7 +251,7 @@ const ProductForm = () => {
             </div>
             
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color:"black" }}>
                 Stock Quantity:
               </label>
               <input 
@@ -270,7 +270,7 @@ const ProductForm = () => {
             </div>
             
             <div style={{ marginBottom: '25px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold',color:"black" }}>
                 Product Image:
               </label>
               <input 

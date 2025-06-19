@@ -1,4 +1,4 @@
-import './login.module.css';
+import './Login.module.css';
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";

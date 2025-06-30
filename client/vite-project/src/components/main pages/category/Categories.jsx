@@ -30,14 +30,24 @@ const CategoriesSection = () => {
     if (category.length === 0) return <div style={{ color: 'black', padding: '20px' }}>No categories found</div>;
     
     return (
-        <div style={{ padding: '0px' , textAlign:"center"}} >
-            <h2 style={{ color: 'black', marginBottom: '70px' ,fontSize:"50px"}}>Our Categories!</h2>
+        <div style={{ padding: '20px', textAlign:"center"}} >
+            <h2 style={{ 
+                color: 'black', 
+                marginBottom: '50px', 
+                fontSize: window.innerWidth <= 480 ? '28px' : window.innerWidth <= 768 ? '36px' : '50px'
+            }}>
+                Our Categories!
+            </h2>
             
             <div style={{ 
                 display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', 
-                gap: '30px',
-                justifyItems: 'center'
+                gridTemplateColumns: window.innerWidth <= 480 ? 'repeat(auto-fill, minmax(120px, 1fr))' : 
+                                   window.innerWidth <= 768 ? 'repeat(auto-fill, minmax(150px, 1fr))' : 
+                                   'repeat(auto-fill, minmax(180px, 1fr))', 
+                gap: window.innerWidth <= 480 ? '20px' : '30px',
+                justifyItems: 'center',
+                maxWidth: '1200px',
+                margin: '0 auto'
             }}>
                 {category.map((categoryItem) => (
                     <div 
@@ -51,8 +61,10 @@ const CategoriesSection = () => {
                             boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                             transition: 'transform 0.3s ease',
                             cursor: 'pointer',
-                            width: '150px',
-                            height: '150px',
+                            width: window.innerWidth <= 480 ? '120px' : 
+                                   window.innerWidth <= 768 ? '140px' : '150px',
+                            height: window.innerWidth <= 480 ? '120px' : 
+                                    window.innerWidth <= 768 ? '140px' : '150px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
@@ -63,9 +75,10 @@ const CategoriesSection = () => {
                     >
                         <span style={{ 
                             color: 'black', 
-                            fontSize: '16px',
+                            fontSize: window.innerWidth <= 480 ? '14px' : '16px',
                             fontWeight: 'bold',
-                            padding: '10px'
+                            padding: '10px',
+                            lineHeight: '1.2'
                         }}>
                             {categoryItem.name} 
                         </span>

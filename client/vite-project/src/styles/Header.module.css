@@ -137,3 +137,125 @@ span{
     top: -10px;
     right: -10px;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    header {
+        padding: 0 15px;
+    }
+    
+    .logo a {
+        font-size: 2.2rem;
+        padding-left: 0;
+    }
+    
+    .li1 {
+        margin-left: 50px;
+    }
+    
+    .search {
+        width: 120px;
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0 10px;
+        flex-wrap: wrap;
+    }
+    
+    ul {
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: none;
+    }
+    
+    ul.mobile-active {
+        display: flex;
+    }
+    
+    ul li {
+        margin: 10px 0;
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+    
+    .logo a {
+        font-size: 1.8rem;
+    }
+    
+    .li1 {
+        margin-left: 0;
+    }
+    
+    .search {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    li.cart {
+        order: -1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        height: 70px;
+        padding: 0 8px;
+    }
+    
+    .logo a {
+        font-size: 1.6rem;
+    }
+    
+    ul li a {
+        font-size: 0.9rem;
+    }
+    
+    .search {
+        height: 32px;
+        font-size: 0.9rem;
+        padding: 0 12px;
+    }
+    
+    .bt1, .bt2 {
+        padding: 0 15px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    li.cart a svg {
+        height: 1.3em;
+        width: 1.3em;
+    }
+    
+    span {
+        font-size: 0.7em;
+        padding: 1px 4px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .logo a {
+        font-size: 1.4rem;
+    }
+    
+    .search {
+        height: 30px;
+        font-size: 0.85rem;
+    }
+    
+    .bt1, .bt2 {
+        padding: 0 12px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+}

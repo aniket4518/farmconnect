@@ -43,10 +43,11 @@ const WhyChooseUs = () => {
 
   return (
     <div style={{
-      padding: '60px 30px',
+      padding: window.innerWidth <= 480 ? '40px 15px' : 
+               window.innerWidth <= 768 ? '50px 20px' : '60px 30px',
       backgroundColor: '#f9f9f9',
       borderRadius: '8px',
-      margin: '60px 0',
+      margin: window.innerWidth <= 480 ? '40px 0' : '60px 0',
       width: '100%',
       boxSizing: 'border-box',
       maxWidth: '100vw'
@@ -54,8 +55,9 @@ const WhyChooseUs = () => {
       <h2 style={{
         textAlign: 'center',
         color: '#2e7d32',
-        marginBottom: '50px',
-        fontSize: '38px',
+        marginBottom: window.innerWidth <= 480 ? '30px' : '50px',
+        fontSize: window.innerWidth <= 480 ? '28px' : 
+                  window.innerWidth <= 768 ? '32px' : '38px',
         fontWeight: 'bold'
       }}>Why Choose FarmConnect</h2>
       
@@ -64,30 +66,33 @@ const WhyChooseUs = () => {
         flexDirection: 'column',
         alignItems: 'center',
         position: 'relative',
-        marginBottom: '40px'
+        marginBottom: window.innerWidth <= 480 ? '30px' : '40px'
       }}>
         {/* Central Image */}
         <div style={{
-          width: '280px',
-          height: '280px',
+          width: window.innerWidth <= 480 ? '200px' : 
+                 window.innerWidth <= 768 ? '240px' : '280px',
+          height: window.innerWidth <= 480 ? '200px' : 
+                  window.innerWidth <= 768 ? '240px' : '280px',
           borderRadius: '50%',
           backgroundColor: '#e8f5e9',
           border: '5px solid #2e7d32',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginBottom: '40px',
+          marginBottom: window.innerWidth <= 480 ? '30px' : '40px',
           boxShadow: '0 10px 20px rgba(0,0,0,0.15)',
           zIndex: 2
         }}>
-          <div style={{ fontSize: '90px' }}>🌾</div>
+          <div style={{ fontSize: window.innerWidth <= 480 ? '60px' : '90px' }}>🌾</div>
           <p style={{
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             margin: 0,
-            fontSize: '22px',
+            fontSize: window.innerWidth <= 480 ? '16px' : 
+                     window.innerWidth <= 768 ? '20px' : '22px',
             fontWeight: 'bold',
             color: '#2e7d32',
             textAlign: 'center'
@@ -97,8 +102,10 @@ const WhyChooseUs = () => {
         {/* Benefits arranged around image */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '30px',
+          gridTemplateColumns: window.innerWidth <= 480 ? '1fr' : 
+                              window.innerWidth <= 768 ? 'repeat(2, 1fr)' : 
+                              'repeat(3, 1fr)',
+          gap: window.innerWidth <= 480 ? '20px' : '30px',
           width: '100%',
           maxWidth: '1200px'
         }}>
@@ -106,7 +113,7 @@ const WhyChooseUs = () => {
             <div key={benefit.id} style={{
               backgroundColor: 'white',
               borderRadius: '12px',
-              padding: '30px',
+              padding: window.innerWidth <= 480 ? '20px' : '30px',
               boxShadow: '0 6px 12px rgba(0,0,0,0.1)',
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               cursor: 'default',
@@ -114,22 +121,26 @@ const WhyChooseUs = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: '250px'
+              minHeight: window.innerWidth <= 480 ? '200px' : '250px'
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-10px)';
-              e.currentTarget.style.boxShadow = '0 12px 20px rgba(0,0,0,0.15)';
+              if (window.innerWidth > 768) {
+                e.currentTarget.style.transform = 'translateY(-10px)';
+                e.currentTarget.style.boxShadow = '0 12px 20px rgba(0,0,0,0.15)';
+              }
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.1)';
+              if (window.innerWidth > 768) {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.1)';
+              }
             }}
             >
               <div style={{
-                fontSize: '48px',
+                fontSize: window.innerWidth <= 480 ? '36px' : '48px',
                 marginBottom: '20px',
-                width: '100px',
-                height: '100px',
+                width: window.innerWidth <= 480 ? '80px' : '100px',
+                height: window.innerWidth <= 480 ? '80px' : '100px',
                 borderRadius: '50%',
                 backgroundColor: '#e8f5e9',
                 display: 'flex',
@@ -143,7 +154,7 @@ const WhyChooseUs = () => {
               <h3 style={{
                 margin: '15px 0',
                 color: '#2e7d32',
-                fontSize: '22px',
+                fontSize: window.innerWidth <= 480 ? '18px' : '22px',
                 textAlign: 'center'
               }}>
                 {benefit.title}
@@ -152,7 +163,7 @@ const WhyChooseUs = () => {
               <p style={{
                 color: '#555',
                 textAlign: 'center',
-                fontSize: '16px',
+                fontSize: window.innerWidth <= 480 ? '14px' : '16px',
                 lineHeight: '1.7'
               }}>
                 {benefit.description}
@@ -164,7 +175,7 @@ const WhyChooseUs = () => {
       
       <div style={{
         textAlign: 'center',
-        marginTop: '60px',
+        marginTop: window.innerWidth <= 480 ? '40px' : '60px',
         padding: '20px',
         backgroundColor: 'white',
         borderRadius: '12px',
@@ -173,7 +184,7 @@ const WhyChooseUs = () => {
         margin: '0 auto'
       }}>
         <p style={{
-          fontSize: '20px',
+          fontSize: window.innerWidth <= 480 ? '16px' : '20px',
           color: '#444',
           maxWidth: '900px',
           margin: '0 auto',

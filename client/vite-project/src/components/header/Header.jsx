@@ -152,7 +152,7 @@ const Header = () => {
                     </Link>
                 </div>
 
-                {/* Login and Register Buttons */}
+                {/* Login, Register, and Logout Buttons */}
                 <div style={{ display: "flex", alignItems: "center", gap: "15px", marginLeft: "20px" }}>
                     <Link 
                         to="/login" 
@@ -211,6 +211,35 @@ const Header = () => {
                         <MdStore size={16} />
                         Continue as Farmer
                     </Link>
+                    
+                    <button
+                        onClick={handleLogout}
+                        style={{
+                            background: "transparent",
+                            color: "#dc3545",
+                            border: "2px solid #dc3545",
+                            padding: "8px 20px",
+                            borderRadius: "25px",
+                            fontWeight: 600,
+                            fontSize: "1rem",
+                            cursor: "pointer",
+                            transition: "all 0.3s ease",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px"
+                        }}
+                        onMouseEnter={(e) => {
+                            e.target.style.background = "#dc3545";
+                            e.target.style.color = "white";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.background = "transparent";
+                            e.target.style.color = "#dc3545";
+                        }}
+                    >
+                        <FiLogOut size={16} />
+                        Logout
+                    </button>
                 </div>
             </nav>
 

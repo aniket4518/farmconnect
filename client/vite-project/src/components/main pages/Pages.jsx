@@ -3,6 +3,7 @@ import Cart from "./cart/Cart";
 import Login from "./auth/Login";
 import Product from "./product/product";
 import Register from "./login/Register";
+import Pricing from "./pricing/Pricing";
  
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./Homepage/Homepage";
@@ -19,6 +20,7 @@ const Pages = () => {
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Homepage />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/check" element={<ProductForm/>} />
             <Route path="/products/category/:categoryId" element={<Product />} />
         </Routes>

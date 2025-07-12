@@ -16,6 +16,7 @@ app.use(cors({
 app.use('/user',require('./routes/userRouter'));
 app.use('/product',require('./routes/productRouter'));
 app.use('/category',require('./routes/categoryRouter'));
+app.use('/pricing',require('./routes/pricingRouter'));
 
 
 // Define a route

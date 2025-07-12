@@ -13,13 +13,15 @@ const Header = () => {
     // Handle window resize
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-            if (window.innerWidth > 768) {
+            const mobile = window.innerWidth <= 768;
+            setIsMobile(mobile);
+            if (!mobile) {
                 setMobileMenuOpen(false);
             }
         };
 
         window.addEventListener('resize', handleResize);
+        handleResize(); // Call once to set initial state
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
@@ -68,10 +70,11 @@ const Header = () => {
                     fontSize: "1.2rem",
                     color: "#40b959",
                     cursor: "pointer",
-                    marginRight: "0px",
-                    width: "40px",
-                    height: "40px",
-                    transition: "all 0.2s ease"
+                    marginLeft: "auto",
+                    width: "44px",
+                    height: "44px",
+                    transition: "all 0.2s ease",
+                    zIndex: 1001
                 }}
             >
                 {mobileMenuOpen ? <FaXmark /> : <FaBars />}
@@ -256,8 +259,23 @@ const Header = () => {
                     zIndex: 9999,
                     maxHeight: "calc(100vh - 80px)",
                     overflowY: "auto",
-                    borderTop: "1px solid #eee"
+                    borderTop: "1px solid #eee",
+                    animation: "slideDown 0.3s ease-out"
                 }}>
+                    <style>
+                        {`
+                            @keyframes slideDown {
+                                from {
+                                    opacity: 0;
+                                    transform: translateY(-10px);
+                                }
+                                to {
+                                    opacity: 1;
+                                    transform: translateY(0);
+                                }
+                            }
+                        `}
+                    </style>
                     <ul style={{
                         listStyle: "none",
                         margin: 0,

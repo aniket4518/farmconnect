@@ -40,6 +40,7 @@ const Header = () => {
             boxShadow: "0 2px 8px rgba(64,185,89,0.07)",
             display: "flex",
             alignItems: "center",
+            justifyContent: isMobile ? "space-between" : "flex-start",
             padding: isMobile ? "0 15px" : "0 20px",
             zIndex: 100,
             position: "sticky",
@@ -50,11 +51,64 @@ const Header = () => {
                 fontWeight: 800, 
                 fontSize: isMobile ? "1.8rem" : "2.2rem", 
                 color: "#40b959", 
-                letterSpacing: "-1px", 
-                marginRight: "auto"
+                letterSpacing: "-1px",
+                flex: isMobile ? "0 0 auto" : "0 0 auto"
             }}>
                 <Link to="/" style={{ color: "#40b959", textDecoration: "none" }}>FarmConnect</Link>
             </div>
+
+            {/* Mobile Search and Cart - Always Visible */}
+            {isMobile && (
+                <div style={{ 
+                    display: "flex", 
+                    alignItems: "center", 
+                    gap: "12px",
+                    marginLeft: "auto",
+                    marginRight: "12px"
+                }}>
+                    {/* Mobile Search */}
+                    <div style={{ position: "relative" }}>
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            style={{
+                                width: "140px",
+                                padding: "8px 12px",
+                                borderRadius: "20px",
+                                border: "1px solid #e0e0e0",
+                                background: "#f9fbe7",
+                                color: "#222",
+                                fontSize: "0.9rem",
+                                outline: "none"
+                            }}
+                        />
+                    </div>
+
+                    {/* Mobile Cart */}
+                    <div style={{ position: "relative" }}>
+                        <Link to="/cart" style={{ position: "relative", textDecoration: "none" }}>
+                            <FaCartShopping size={20} color="#40b959" />
+                            {cartItemCount > 0 && (
+                                <span style={{
+                                    position: "absolute",
+                                    top: "-8px",
+                                    right: "-8px",
+                                    background: "#40b959",
+                                    color: "white",
+                                    borderRadius: "50%",
+                                    padding: "2px 6px",
+                                    fontSize: "0.7rem",
+                                    fontWeight: "bold",
+                                    minWidth: "16px",
+                                    textAlign: "center"
+                                }}>
+                                    {cartItemCount}
+                                </span>
+                            )}
+                        </Link>
+                    </div>
+                </div>
+            )}
 
             {/* Mobile Menu Toggle */}
             <button
@@ -70,7 +124,6 @@ const Header = () => {
                     fontSize: "1.2rem",
                     color: "#40b959",
                     cursor: "pointer",
-                    marginLeft: "auto",
                     width: "44px",
                     height: "44px",
                     transition: "all 0.2s ease",
@@ -248,20 +301,23 @@ const Header = () => {
 
             {/* Mobile Navigation Menu */}
             {mobileMenuOpen && isMobile && (
-                <div style={{
-                    position: "fixed",
-                    top: "80px",
-                    left: 0,
-                    right: 0,
-                    background: "#fff",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                    padding: "20px",
-                    zIndex: 9999,
-                    maxHeight: "calc(100vh - 80px)",
-                    overflowY: "auto",
-                    borderTop: "1px solid #eee",
-                    animation: "slideDown 0.3s ease-out"
-                }}>
+                <div 
+                    className="mobile-menu-override"
+                    style={{
+                        position: "fixed",
+                        top: "80px",
+                        left: 0,
+                        right: 0,
+                        background: "#fff",
+                        boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+                        padding: "20px",
+                        zIndex: "99999 !important",
+                        maxHeight: "calc(100vh - 80px)",
+                        overflowY: "auto",
+                        borderTop: "1px solid #eee",
+                        animation: "slideDown 0.3s ease-out",
+                        display: "block !important"
+                    }}>
                     <style>
                         {`
                             @keyframes slideDown {
@@ -274,15 +330,43 @@ const Header = () => {
                                     transform: translateY(0);
                                 }
                             }
+                            
+                            /* Override CSS module styles for mobile menu */
+                            @media screen and (max-width: 768px) {
+                                .mobile-menu-override ul {
+                                    display: flex !important;
+                                    position: static !important;
+                                    top: auto !important;
+                                    left: auto !important;
+                                    width: 100% !important;
+                                    background: transparent !important;
+                                    box-shadow: none !important;
+                                    flex-direction: column !important;
+                                }
+                                
+                                .mobile-menu-override ul li {
+                                    display: block !important;
+                                    margin: 0 !important;
+                                    text-align: left !important;
+                                    border-bottom: none !important;
+                                    padding: 0 !important;
+                                }
+                            }
                         `}
                     </style>
                     <ul style={{
-                        listStyle: "none",
-                        margin: 0,
-                        padding: 0,
-                        display: "flex",
+                        listStyle: "none !important",
+                        margin: "0 !important",
+                        padding: "0 !important",
+                        display: "flex !important",
                         flexDirection: "column",
-                        gap: "15px"
+                        gap: "15px",
+                        position: "static !important",
+                        width: "100% !important",
+                        background: "transparent !important",
+                        boxShadow: "none !important",
+                        top: "auto !important",
+                        left: "auto !important"
                     }}>
                         <li>
                             <Link 
@@ -350,55 +434,6 @@ const Header = () => {
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 About
-                            </Link>
-                        </li>
-                        <li>
-                            <input
-                                type="text"
-                                placeholder="Search products..."
-                                style={{
-                                    width: "100%",
-                                    padding: "12px 18px",
-                                    borderRadius: "20px",
-                                    border: "1px solid #e0e0e0",
-                                    background: "#f9fbe7",
-                                    color: "#222",
-                                    fontSize: "1rem",
-                                    outline: "none",
-                                    marginTop: "10px",
-                                    boxSizing: "border-box"
-                                }}
-                            />
-                        </li>
-                        <li style={{ display: "flex", alignItems: "center", padding: "10px 0", borderBottom: "1px solid #eee" }}>
-                            <Link 
-                                to="/cart" 
-                                style={{ 
-                                    color: "#222", 
-                                    fontWeight: 600, 
-                                    fontSize: "1.1rem",
-                                    textDecoration: "none",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    position: "relative"
-                                }}
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                <FaCartShopping style={{ marginRight: "10px", fontSize: "1.2rem", color: "#40b959" }} />
-                                Cart
-                                {cartItemCount > 0 && (
-                                    <span style={{
-                                        marginLeft: "10px",
-                                        background: "#40b959",
-                                        color: "white",
-                                        borderRadius: "50%",
-                                        padding: "2px 8px",
-                                        fontSize: "0.8rem",
-                                        fontWeight: "bold"
-                                    }}>
-                                        {cartItemCount}
-                                    </span>
-                                )}
                             </Link>
                         </li>
                         <li style={{ borderTop: "1px solid #eee", paddingTop: "15px", marginTop: "10px" }}>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import config from "../../../config";
 import { useNavigate } from "react-router-dom"; // Add this import
 
 const CategoriesSection = () => {
@@ -12,7 +13,7 @@ const CategoriesSection = () => {
         const getcategories = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get("http://localhost:3000/category/all");
+                const response = await axios.get(`${config.API_BASE_URL}/category/all`);
                 console.log("Categories data:", response.data);
                 setcategory(response.data);
                 setLoading(false);

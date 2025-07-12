@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import config from '../../../config';
 
 const MarketSummary = () => {
     const [summary, setSummary] = useState(null);
@@ -9,7 +8,7 @@ const MarketSummary = () => {
     useEffect(() => {
         const fetchSummary = async () => {
             try {
-                const response = await axios.get(`${config.API_BASE_URL}/pricing/summary`);
+                const response = await axios.get('http://localhost:3000/pricing/summary');
                 if (response.data.success) {
                     setSummary(response.data.summary);
                 }

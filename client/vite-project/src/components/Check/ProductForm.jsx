@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import config from '../../config';
 import { useNavigate } from 'react-router-dom';
 
 const ProductForm = () => {
@@ -23,7 +22,7 @@ const ProductForm = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${config.API_BASE_URL}/category/all`);
+        const response = await axios.get('http://localhost:3000/category/all');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -79,7 +78,7 @@ const ProductForm = () => {
     formData.append('productImage', productImage);
 
     try {
-      const response = await axios.post(`${config.API_BASE_URL}/product/create`, formData, {
+      const response = await axios.post('http://localhost:3000/product/create', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

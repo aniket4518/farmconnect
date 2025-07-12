@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import config from "./config";
 
 export const GlobalState = createContext();
 
@@ -36,7 +35,7 @@ export const DataProvider = ({ children }) => {
             }
             // Sync to server
             axios.patch(
-                `${config.API_BASE_URL}/user/update_cart`,
+                "http://localhost:3000/user/update_cart",
                 { cart: updatedCart },
                 {
                     headers: { Authorization: `Bearer ${accessToken}` },
@@ -59,7 +58,7 @@ export const DataProvider = ({ children }) => {
             const updatedCart = (Array.isArray(prevCart) ? prevCart : []).filter((cartItem) => cartItem._id !== itemId);
             // Sync to server
             axios.patch(
-                `${config.API_BASE_URL}/user/update_cart`,
+                "http://localhost:3000/user/update_cart",
                 { cart: updatedCart },
                 {
                     headers: { Authorization: `Bearer ${accessToken}` },
@@ -76,7 +75,7 @@ export const DataProvider = ({ children }) => {
     //login
     const loginUser = async (credentials) => {
         try {
-            const { data } = await axios.post(`${config.API_BASE_URL}/user/login`, credentials);
+            const { data } = await axios.post("http://localhost:3000/user/login", credentials);
             const { accesstoken, user } = data;
             console.log("Login response data:", data);
 
@@ -118,7 +117,7 @@ export const DataProvider = ({ children }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const response = await axios.get(`${config.API_BASE_URL}/product/all`);
+                const response = await axios.get("http://localhost:3000/product/all");
                 setProducts(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);

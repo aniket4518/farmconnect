@@ -3,7 +3,6 @@ import { GlobalState } from "../../../GlobalState";
 import ProductList from "../productList/ProductList";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import config from "../../../config";
 import "../../../styles/ProductList.module.css";
 
 const Product = () => {
@@ -16,7 +15,7 @@ const Product = () => {
         if (categoryId) {
             setLoading(true);
             axios
-                .get(`${config.API_BASE_URL}/product/bycategory?category=${categoryId}`)
+                .get(`http://localhost:3000/product/bycategory?category=${categoryId}`)
                 .then(res => {
                     setProducts(res.data);
                     setLoading(false);

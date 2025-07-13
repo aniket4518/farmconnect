@@ -46,14 +46,28 @@ app.get("/", (req, res) => {
     });
 });
 
-// Import and use routes
+// Test route
+app.get("/test", (req, res) => {
+    res.json({ message: "Test endpoint working" });
+});
+
+// Import and use routes with error handling
 try {
-    app.use('/user', require('../routes/userRouter'));
-    app.use('/product', require('../routes/productRouter'));
-    app.use('/category', require('../routes/categoryRouter'));
-    app.use('/pricing', require('../routes/pricingRouter'));
+    console.log('Loading routes...');
+    const userRouter = require('../routes/userRouter');
+    const productRouter = require('../routes/productRouter');
+    const categoryRouter = require('../routes/categoryRouter');
+    const pricingRouter = require('../routes/pricingRouter');
+    
+    app.use('/user', userRouter);
+    app.use('/product', productRouter);
+    app.use('/category', categoryRouter);
+    app.use('/pricing', pricingRouter);
+    
+    console.log('Routes loaded successfully');
 } catch (error) {
     console.error('Error loading routes:', error.message);
+    console.error('Stack:', error.stack);
 }
 
 // Error handling middleware

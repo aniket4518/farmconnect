@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MarketSummary from './MarketSummary';
+import API_BASE_URL from '../../../config';
 
 const Pricing = () => {
     const [priceData, setPriceData] = useState([]);
@@ -18,7 +19,7 @@ const Pricing = () => {
         const fetchPriceData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:3000/pricing/government-prices');
+                const response = await axios.get(`${API_BASE_URL}/pricing/government-prices`);
                 if (response.data.success) {
                     setPriceData(response.data.data);
                 } else {

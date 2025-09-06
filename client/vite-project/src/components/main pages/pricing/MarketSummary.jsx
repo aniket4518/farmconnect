@@ -9,7 +9,7 @@ const MarketSummary = () => {
     useEffect(() => {
         const fetchSummary = async () => {
             try {
-                const response = await axios.get(`${API_BASE_URL}/pricing/summary`);
+                const response = await axios.get(`${API_BASE_URL}`);
                 if (response.data.success) {
                     setSummary(response.data.summary);
                 }

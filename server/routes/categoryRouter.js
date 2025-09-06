@@ -8,7 +8,8 @@ const multerMiddleware = require('../middleware/multer');
 
 router.post('/create', multerMiddleware.single('image'), categoryctrl.createCategory);
 router.get('/all', categoryctrl.getCategory);
+router.get('/', categoryctrl.getCategory);
 
 router.delete('/:id', auth, categoryctrl.deleteCategory);
-router.put('/:id', auth, categoryctrl.updateCategory);
+router.put('/:id', multerMiddleware.single('image'), categoryctrl.updateCategory);
 module.exports = router;

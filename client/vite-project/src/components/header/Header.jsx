@@ -49,7 +49,9 @@ const Header = () => {
             {/* Logo */}
             <div style={{ 
                 fontWeight: 800, 
-                fontSize: isMobile ? "1.8rem" : "2.2rem", 
+               paddingRight: "60px",
+               paddingLeft: isMobile ? "0" : "10px",
+                fontSize: isMobile ? "1.4rem" : "1.8rem", 
                 color: "#40b959", 
                 letterSpacing: "-1px",
                 flex: isMobile ? "0 0 auto" : "0 0 auto"

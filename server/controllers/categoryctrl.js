@@ -1,5 +1,7 @@
-const category =require('../models/categorymodel');
-const categoryctrl ={
+const category = require('../models/categorymodel');
+const { uploadImageFromImagesFolder } = require('../middleware/Cloudinary');
+
+const categoryctrl = {
  getCategory: async(req,res)=>{
      try{
          const categories = await category.find();
@@ -12,8 +14,12 @@ const categoryctrl ={
      try{
          const {name} = req.body;
          let image = "";
-         const result = await uploadImageFromImagesFolder(req.file.filename);
-         image = result.imageUrl;
+         
+         if (req.file) {
+             // Upload image to Cloudinary and get the URL
+             image = await uploadImageFromImagesFolder(req.file.filename);
+         }
+         
          const newCategory = new category({name, img: image});
          await newCategory.save();
          res.json({msg:"Category created"});
@@ -32,11 +38,19 @@ const categoryctrl ={
     updateCategory: async(req,res)=>{
         try{
             const {name} = req.body;
-            await category.findOneAndUpdate({_id:req.params.id},{name});
+            let updateData = {name};
+            
+            // If a new image is uploaded, update it
+            if (req.file) {
+                const imageUrl = await uploadImageFromImagesFolder(req.file.filename);
+                updateData.img = imageUrl;
+            }
+            
+            await category.findOneAndUpdate({_id:req.params.id}, updateData);
             res.json({msg:"Category updated"});
         }catch(err){
             return res.status(500).json({msg:err.message});
         }
-},
+    },
 }
 module.exports =categoryctrl;

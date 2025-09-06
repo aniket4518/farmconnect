@@ -167,7 +167,7 @@ const ProductForm = () => {
       
       <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
         {/* Product Form */}
-        <div style={{ flex: '1', minWidth: '300px' }}>
+        <div style={{ flex: '1', minWidth: '300px',backgroundColor:"'#ffebee" }}>
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: '15px' }}>
               <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' , color: "black" }}>

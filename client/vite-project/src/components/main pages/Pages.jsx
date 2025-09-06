@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./Homepage/Homepage";
 import ProductDetail from "./productDetail/ProductDetail";
 import ProductForm from "../Check/ProductForm";
+import Categoryform from "../Check/Categoryform";
  
 
 const Pages = () => {
@@ -22,6 +23,7 @@ const Pages = () => {
             <Route path="/" element={<Homepage />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/check" element={<ProductForm/>} />
+            <Route path="/admin/createcat" element={<Categoryform/>} />
             <Route path="/products/category/:categoryId" element={<Product />} />
         </Routes>
     );

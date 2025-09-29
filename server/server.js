@@ -6,12 +6,24 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: [
-        "http://localhost:5173", 
-        "http://localhost:5174", 
-        "https://farmconnect-2ifj.vercel.app",
-        /\.vercel\.app$/  // Allow all Vercel preview deployments
-    ],  
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps, Postman, etc.)
+        if (!origin) return callback(null, true);
+        
+        const allowedOrigins = [
+            "http://localhost:5173",
+            "http://localhost:5174", 
+            "https://farmconnect-2ifj.vercel.app",
+            "https://farmconnect-gamma.vercel.app"
+        ];
+        
+        // Check if origin is in allowed list or is a Vercel domain
+        if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+            return callback(null, true);
+        }
+        
+        return callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,  
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],

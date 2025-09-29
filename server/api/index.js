@@ -8,10 +8,17 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://farmconnect-2ifj.vercel.app"],  
+    origin: [
+        "http://localhost:5173", 
+        "http://localhost:5174", 
+        "https://farmconnect-2ifj.vercel.app",
+        /\.vercel\.app$/  // Allow all Vercel preview deployments
+    ],  
     credentials: true,  
-    allowedHeaders:"Content-Type, Authorization",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 }));
 
 // Connect to MongoDB with better error handling
